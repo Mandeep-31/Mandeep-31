@@ -401,7 +401,7 @@ export default function Footer() {
 
         <div className="footer-meta">
           <span>© 2026 — Mandeep</span>
-          <span className="footer-meta-center">27° 42′ N — 85° 19′ E</span>
+          <span className="footer-meta-center">Budhanilkantha, Kathmandu</span>
           <button className="footer-top" type="button" onClick={scrollToTop}>
             Back to top ↑
           </button>
