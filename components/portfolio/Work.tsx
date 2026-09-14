@@ -17,7 +17,7 @@ const PROJECTS = [
     title: "Project 01",
     tags: "Placeholder",
     year: "2026",
-    image: "/work-kaag.jpg",
+    image: "work-kaag.jpg",
     alt: "Black sand texture with faint natural patterns",
   },
   {
@@ -25,7 +25,7 @@ const PROJECTS = [
     title: "Project 02",
     tags: "Placeholder",
     year: "2026",
-    image: "/work-himal.jpg",
+    image: "work-himal.jpg",
     alt: "Snowy mountain ridges under a starry night sky",
   },
   {
@@ -33,7 +33,7 @@ const PROJECTS = [
     title: "Project 03",
     tags: "Placeholder",
     year: "2026",
-    image: "/work-prana.jpg",
+    image: "work-prana.jpg",
     alt: "Calm ocean swell in soft teal light",
   },
   {
@@ -41,7 +41,7 @@ const PROJECTS = [
     title: "Project 04",
     tags: "Placeholder",
     year: "2026",
-    image: "/work-yatra.jpg",
+    image: "work-yatra.jpg",
     alt: "Moody sea at dusk under a clouded sunset",
   },
 ];

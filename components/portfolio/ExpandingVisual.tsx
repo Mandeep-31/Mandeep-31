@@ -3,7 +3,8 @@
  * (source: unsplash photo-1517685352821-92cf88aee5a5).
  * Swap this one constant when the real visual object is ready.
  */
-const HERO_IMAGE = "/hero-sky.jpg";
+/* Relative so it resolves under the /Mandeep-31 Pages subpath */
+const HERO_IMAGE = "hero-sky.jpg";
 
 export default function ExpandingVisual() {
   return (
