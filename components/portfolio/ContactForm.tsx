@@ -8,6 +8,29 @@ const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
 
+/*
+ * NEXT_PUBLIC_* vars are inlined at BUILD time. If any is empty, the deployed
+ * build was made without them (e.g. missing from the host's env settings) and
+ * every emailjs.send() will fail — surface that loudly in dev instead of
+ * failing silently at submit time. See .env.example.
+ */
+if (process.env.NODE_ENV === "development") {
+  const missing = [
+    ["NEXT_PUBLIC_EMAILJS_SERVICE_ID", SERVICE_ID],
+    ["NEXT_PUBLIC_EMAILJS_TEMPLATE_ID", TEMPLATE_ID],
+    ["NEXT_PUBLIC_EMAILJS_PUBLIC_KEY", PUBLIC_KEY],
+  ]
+    .filter(([, value]) => !value)
+    .map(([name]) => name);
+  if (missing.length > 0) {
+    console.error(
+      `[ContactForm] Missing EmailJS env vars: ${missing.join(", ")}. ` +
+        "Add them to .env.local (and to the deploy platform as BUILD-time " +
+        "env vars), then restart/redeploy — submissions will fail without them."
+    );
+  }
+}
+
 const WHATSAPP = "https://wa.me/919741689162";
 
 type StepKey = "name" | "email" | "subject" | "message";
