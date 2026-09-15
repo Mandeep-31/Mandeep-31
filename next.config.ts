@@ -1,16 +1,14 @@
 import type { NextConfig } from "next";
 
 /*
- * Static export for GitHub Pages, which serves the site from
- * https://mandeep-31.github.io/Mandeep-31/ (repo subpath). Set the empty
- * string in .env.local (NEXT_BASE_PATH=) to serve at the root during local
- * development; CI builds (no env file) keep the "/Mandeep-31" subpath.
- * If the site is ever hosted at a domain root (custom domain or other
- * provider), drop `basePath` entirely.
+ * Static export for GitHub Pages. The site is served at the domain root
+ * (custom domain mandeepacharya.com.np), so no basePath is applied — all
+ * assets and links are root-relative. If the site is ever served from a
+ * repo subpath instead, set NEXT_BASE_PATH=/Mandeep-31 when building.
  */
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: process.env.NEXT_BASE_PATH ?? "/Mandeep-31",
+  basePath: process.env.NEXT_BASE_PATH ?? "",
 };
 
 export default nextConfig;
