@@ -32,6 +32,16 @@ jobs:
 
       - name: Build static export
         run: npm run build
+        env:
+          # NEXT_PUBLIC_* vars are inlined into the client bundle at BUILD
+          # time — they must come from repo secrets, not the host shell.
+          # Configure under Settings → Secrets and variables → Actions
+          # (.env.example lists them). Missing secrets resolve to empty
+          # strings; the build then warns loudly in this log.
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}
+          NEXT_PUBLIC_CF_BEACON_TOKEN: ${{ secrets.NEXT_PUBLIC_CF_BEACON_TOKEN }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
