@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { textReveal02 } from "./text-reveal-02";
@@ -390,9 +391,9 @@ export default function Footer() {
             Let’s make it <em>move</em>.
           </h2>
 
-          <a className="footer-mail" href="mailto:mandeepac31@gmail.com">
+          <Link className="footer-mail" href="/contact">
             mandeepac31@gmail.com <span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </div>
 
         <div className="footer-art" aria-hidden="true">

@@ -13,7 +13,7 @@ export default function Navbar() {
       </Link>
 
       <nav className="nav-group nav-right" aria-label="Secondary">
-        <a href="mailto:mandeepac31@gmail.com">Contact</a>
+        <Link href="/contact">Contact</Link>
       </nav>
     </header>
   );
