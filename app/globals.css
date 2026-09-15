@@ -4,7 +4,7 @@
   --muted: #80807a;
 
   /* Hero typography */
-  --type-size: clamp(3rem, min(13.5vw, 20vh), 15rem);
+  --type-size: clamp(2.5rem, min(11vw, 17vh), 13rem);
 }
 
 * {
@@ -712,6 +712,60 @@ html.lenis body {
   text-align: center;
   white-space: nowrap;
   will-change: transform;
+}
+
+/* ------------------------------ preloader -------------------------------- */
+
+.preload {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--bg);
+  color: var(--ink);
+
+  overflow: clip;
+  will-change: transform;
+}
+
+/* Skipped runs (repeat visits) never paint the overlay */
+.preload.is-skipped {
+  display: none;
+}
+
+.preload-stage {
+  position: relative;
+}
+
+.preload-mark {
+  font-size: clamp(3rem, min(13vw, 16vh), 9rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Each character is masked; the inner is parked below the clip (120%) so
+   nothing flashes before the rise — GSAP animates it home. */
+.preload-char {
+  display: inline-block;
+  overflow: clip;
+}
+
+.preload-char-inner {
+  display: inline-block;
+  transform: translateY(120%);
+  will-change: transform;
+}
+
+/* Scroll is locked while the intro runs */
+html.preload-lock,
+html.preload-lock body {
+  height: 100%;
+  overflow: hidden;
 }
 
 /* ------------------------------- about ---------------------------------- */
@@ -1435,7 +1489,7 @@ html.lenis body {
 
 @media (max-width: 720px) {
   :root {
-    --type-size: clamp(2.5rem, 12.5vw, 5rem);
+    --type-size: clamp(2rem, 10.5vw, 4rem);
   }
 
   .hero {
