@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
+const WEBSITE_NAME = "Mandeep Acharya Website";
 
 /*
  * NEXT_PUBLIC_* vars are inlined at BUILD time. If any is empty, the deployed
@@ -151,10 +152,13 @@ export default function ContactForm() {
         SERVICE_ID,
         TEMPLATE_ID,
         {
+          from_name: WEBSITE_NAME,
           name: values.name.trim(),
           email: values.email.trim().toLowerCase(),
+          reply_to: values.email.trim().toLowerCase(),
           subject: values.subject.trim(),
           message: values.message.trim(),
+          to_name: "Mandeep Acharya",
         },
         { publicKey: PUBLIC_KEY }
       );
